@@ -1,8 +1,13 @@
-foo = require('./foo.js')
-
+const Mongoose = require('./mongoose.js');
+const mongoose = new Mongoose();
+ 
 exports.handler = function(event, context, callback) {
-    callback(null, {
-        statusCode: 200,
-        body: "Hello, World" + foo.foo
-    });
+  // see https://mongoosejs.com/docs/lambda.html
+  context.callbackWaitsForEmptyEventLoop = false;
+  // console.log(mongoose.connection);
+  mongoose.connection;
+  callback(null, {
+      statusCode: 200,
+      body: "Hello world"
+  });
 };

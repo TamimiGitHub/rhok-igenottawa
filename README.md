@@ -15,8 +15,7 @@ Netlify uses NodeJS 8.x, so using that locally with `nvm` is recommended.
 ## Running locally
 Setup a `.env` file with the following environment variables (get info from a developer):
 ```
-#TODO
-MONGO_CONNECTION_STRING=
+CONNECTION_STRING=
 ```
 
 ```
