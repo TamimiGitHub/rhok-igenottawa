@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const EventItem = require('../models/eventItem')
 const querystring = require('querystring')
 
-
 let uri = process.env.CONNECTION_STRING;
 //Connect to db
 mongoose.
