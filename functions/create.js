@@ -16,7 +16,6 @@ mongoose.
   .catch(err => console.error("Failed to connect to MongoDB"))
  
 exports.handler = function(event, context, callback) {
-  // see https://mongoosejs.com/docs/lambda.html
   context.callbackWaitsForEmptyEventLoop = false;
 
   const params = querystring.parse(new Buffer(event.body,'base64').toString('ascii'));
@@ -29,7 +28,7 @@ exports.handler = function(event, context, callback) {
       console.log("saved in db")
       callback(null, {
         statusCode: 200,
-        body: "Hello world"
+        body: "Thank you for your submission! Your event is listed on the events list page"
       });
     })
     .catch(err => console.log(err))
