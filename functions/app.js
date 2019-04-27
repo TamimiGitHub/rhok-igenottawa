@@ -1,4 +1,4 @@
-const MongooseConnection = require('./mongoose.js');
+const MongooseConnection = require('./mongoose_connection.js');
 const mongoose = new MongooseConnection();
  
 exports.handler = function(event, context, callback) {
