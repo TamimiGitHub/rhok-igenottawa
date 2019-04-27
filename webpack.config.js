@@ -6,7 +6,7 @@ module.exports = {
     list: './functions/list.js'
   },
   output: {
-    path: __dirname + "/functions-packed",
+    path: __dirname + "/public",
     filename: '[name].js',
   },
   target: 'node',
