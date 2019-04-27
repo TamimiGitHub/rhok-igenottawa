@@ -8,4 +8,9 @@ Netlify for functions and static content
 
 # Development Setup
 TODO
-We are using `netlify-lambda`.
+We are using `netlify-cli`.
+
+`npm install -g netlify -cli`
+
+`netlify dev -o`
+http://localhost:8888/.netlify/functions/hello

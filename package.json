@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/igenday/rhok-igenottawa#readme",
   "dependencies": {
-    "netlify-lambda": "^1.4.5"
+  },
+  "devDependencies": {
+    "netlify-cli": "^2.11.14"
   }
 }
