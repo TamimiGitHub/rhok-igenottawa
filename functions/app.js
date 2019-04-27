@@ -16,7 +16,7 @@ mongoose.
  
 exports.handler = function(event, context, callback) {
   // see https://mongoosejs.com/docs/lambda.html
-  // context.callbackWaitsForEmptyEventLoop = false;
+  context.callbackWaitsForEmptyEventLoop = false;
 
   // Create a db entry for an event 
   let entry = new EventItem()
