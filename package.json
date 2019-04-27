@@ -17,8 +17,11 @@
     "url": "https://github.com/igenday/rhok-igenottawa/issues"
   },
   "homepage": "https://github.com/igenday/rhok-igenottawa#readme",
-  "dependencies": {},
+  "dependencies": {
+    "mongoose": "^5.5.4"
+  },
   "devDependencies": {
+    "dotenv": "^7.0.0",
     "netlify-cli": "^2.11.14"
   }
 }
