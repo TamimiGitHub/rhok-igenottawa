@@ -10,7 +10,7 @@ Netlify for functions and static content
 TODO
 We are using `netlify-cli`.
 
-`npm install -g netlify -cli`
+`npm install -g netlify-cli`
 
 `netlify dev -o`
 http://localhost:8888/.netlify/functions/hello

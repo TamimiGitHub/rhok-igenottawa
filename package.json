@@ -17,8 +17,7 @@
     "url": "https://github.com/igenday/rhok-igenottawa/issues"
   },
   "homepage": "https://github.com/igenday/rhok-igenottawa#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "netlify-cli": "^2.11.14"
   }
