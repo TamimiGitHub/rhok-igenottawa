@@ -1,8 +1,8 @@
 // See https://mongoosejs.com/docs/lambda.html
-const dotenv = require('dotenv').config()
+require('dotenv').config()
 const mongoose = require('mongoose');
 
-class Mongoose {
+class MongooseConnection {
   
   constructor() {
     let uri = process.env.CONNECTION_STRING;
@@ -21,4 +21,4 @@ class Mongoose {
 
 }
 
-module.exports = Mongoose;
+module.exports = MongooseConnection;

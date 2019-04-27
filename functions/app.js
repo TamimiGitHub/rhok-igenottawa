@@ -1,5 +1,5 @@
-const Mongoose = require('./mongoose.js');
-const mongoose = new Mongoose();
+const MongooseConnection = require('./mongoose.js');
+const mongoose = new MongooseConnection();
  
 exports.handler = function(event, context, callback) {
   // see https://mongoosejs.com/docs/lambda.html
