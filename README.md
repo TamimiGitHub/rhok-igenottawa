@@ -1,16 +1,28 @@
 # Events Portal - iGenOttawa
 This repo will hold the iGenEventsPortal &trade; that will be used for [iGenOttawa](https://igenottawaca.previews.rebel.com/)
 
-# Infrastructure
+## Infrastructure
 mLab for Mongo
 Cloudinary for image hosting + optimization
 Netlify for functions and static content
 
-# Development Setup
-TODO
-We are using `netlify-cli`.
+## A note on builds
+Local development uses `npm run dev`. Netlify uses `npm run build`.
 
-`npm install -g netlify-cli`
+## Running locally
+Setup a `.env` file with the following environment variables (get info from a developer):
+```
+#TODO
+MONGO_CONNECTION_STRING=
+```
 
-`netlify dev -o`
-http://localhost:8888/.netlify/functions/hello
+```
+npm install
+npm install -g netlify-cli
+npm run dev
+```
+
+Access the function at http://localhost:8888/.netlify/functions/app.
+
+## Deploying
+Just `git push`. Netlify runs the `build` script defined in `package.json.`

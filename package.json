@@ -4,7 +4,8 @@
   "description": "This repo will hold the iGenEventsPortal &trade; that will be used for [iGenOttawa](https://igenottawaca.previews.rebel.com/)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development && netlify dev -o"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,9 @@
   },
   "homepage": "https://github.com/igenday/rhok-igenottawa#readme",
   "dependencies": {
+    "dotenv": "^7.0.0",
     "mongoose": "^5.5.4",
-    "dotenv": "^7.0.0"
+    "webpack": "^4.30.0"
   },
   "devDependencies": {
     "netlify-cli": "^2.11.14"
