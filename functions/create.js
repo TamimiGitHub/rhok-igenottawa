@@ -1,6 +1,7 @@
 require('dotenv').config()
 const mongoose = require('mongoose');
 const EventItem = require('../models/eventItem')
+const querystring = require('querystring')
 
 
 let uri = process.env.CONNECTION_STRING;
@@ -15,14 +16,15 @@ mongoose.
   .catch(err => console.error("Failed to connect to MongoDB"))
  
 exports.handler = function(event, context, callback) {
-  console.log(event)
   // see https://mongoosejs.com/docs/lambda.html
   context.callbackWaitsForEmptyEventLoop = false;
 
+  const params = querystring.parse(new Buffer(event.body,'base64').toString('ascii'));
+
   // Create a db entry for an event 
   let entry = new EventItem()
-  entry.eventName = "Tai's Event"
-  entry.description = "This event is hosted"
+  entry.eventName = params.eventName
+  entry.description = params.description
   entry.save().then(() => {
       console.log("saved in db")
       callback(null, {
