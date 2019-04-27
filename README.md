@@ -9,6 +9,9 @@ Netlify for functions and static content
 ## A note on builds
 Local development uses `npm run dev`. Netlify uses `npm run build`.
 
+# Platform
+Netlify uses NodeJS 8.x, so using that locally with `nvm` is recommended.
+
 ## Running locally
 Setup a `.env` file with the following environment variables (get info from a developer):
 ```
