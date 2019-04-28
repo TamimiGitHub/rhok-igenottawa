@@ -29,8 +29,18 @@ exports.handler = function(event, context, callback) {
 
   // Create a db entry for an event 
   let entry = new EventItem()
-  entry.eventName = params.eventName
-  entry.description = params.description
+  entry.eventTitle = params.eventTitle
+  entry.location = params.location
+  entry.eventDesc = params.eventDesc
+  entry.date = params.date
+  entry.startTimeHour = params.startTimeHour
+  entry.startTimeMinute = params.startTimeMinute
+  entry.endTimeHour = params.endTimeHour
+  entry.endTimeMinute = params.endTimeMinute
+  entry.website = params.website
+  entry.organizationName = params.organizationName
+  entry.contactName = params.contactName
+
   entry.save().then(() => {
       console.log("saved in db")
       success(callback);
@@ -38,7 +48,7 @@ exports.handler = function(event, context, callback) {
     .catch(err => console.log(err))
 };
 
-const requiredParams = ["eventName", "description"];
+const requiredParams = ["eventTitle", "eventDesc"];
 function paramsValid(params) {
   let paramNames = Object.keys(params);
   for (let requiredParam of requiredParams) {

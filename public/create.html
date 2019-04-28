@@ -5,11 +5,29 @@
 <h2>HTML Forms</h2>
 
 <form action="/.netlify/functions/create" method="POST">
-  Event Name:<br>
-  <input type="text" name="eventName" value="Mickey">
+  Event Title:<br>
+  <input type="text" name="eventTitle" value="Mickey">
   <br>
-  Description:<br>
-  <input type="text" name="description" value="Mouse">
+  Location:<br>
+  <input type="text" name="location" value="Mouse">
+  <br>
+  Decsription:<br>
+  <input type="text" name="eventDesc" value="Mickey">
+  Date:<br>
+  <input type="text" name="date" value="Mickey">
+  <br>
+  Start time Hour:<br>
+  <input type="text" name="startTimeHour" value="Mickey">
+  startTimeMinute:<br>
+  <input type="text" name="startTimeMinute" value="Mickey">
+  endTimeHour:<br>
+  <input type="text" name="endTimeHour" value="Mickey">
+  endTimeMinute:<br>
+  <input type="text" name="endTimeMinute" value="Mickey">
+  website:<br>
+  <input type="text" name="website" value="Mickey">
+  organizationName:<br>
+  <input type="text" name="organizationName" value="Mickey">
   <br><br>
   <input type="submit" value="Submit">
 </form> 
@@ -18,3 +36,16 @@
 
 </body>
 </html>
+
+
+entry.eventTitle = params.eventTitle
+  entry.location = params.location
+  entry.eventDesc = params.eventDesc
+  entry.date = params.date
+  entry.startTimeHour = params.startTimeHour
+  entry.startTimeMinute = params.startTimeMinute
+  entry.endTimeHour = params.endTimeHour
+  entry.endTimeMinute = params.endTimeMinute
+  entry.website = params.website
+  entry.organizationName = params.organizationName
+  entry.contactName = params.contactName
