@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// const collectionName = 'events'
-const collectionName = 'events-test'
+const collectionName = 'events'
+// const collectionName = 'events-test'
 
 // Create Schema
 var eventSchema = new Schema({
