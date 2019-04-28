@@ -32,3 +32,25 @@ Just `git push`. Netlify runs the `build` script defined in `package.json.`
 
 ## Production URL
 https://igenottawa.netlify.com
+
+## TODO
+
+### General
+* Link back to homepage
+* Links between create and listing page
+* Rewrite rule for list function? (So that URL doesn't include .netlify/functions)
+* Backend validation - required fields
+* Image uploads
+* Make date/time inputs look nice in Firefox
+* French content edits/correctness
+* Make schema store real dates, etc.
+* Render all submitted fields on cards
+
+### Admin functions
+* Delete listing
+* Email on new event creation
+
+### Securiy
+* Captcha
+* Escape user input for XSS, etc.
+* Auth for admin functions
