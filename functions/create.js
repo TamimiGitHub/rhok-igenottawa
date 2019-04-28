@@ -17,7 +17,15 @@ mongoose.
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
 
-  const params = querystring.parse(new Buffer(event.body,'base64').toString('ascii'));
+  if (event.httpMethod != 'POST') {
+    return invalidMethod(callback);
+  }
+
+  let params = querystring.parse(new Buffer(event.body,'base64').toString('ascii'));
+
+  if (!paramsValid(params)) {
+    return invalidParams(callback);
+  }
 
   // Create a db entry for an event 
   let entry = new EventItem()
@@ -32,3 +40,29 @@ exports.handler = function(event, context, callback) {
     })
     .catch(err => console.log(err))
 };
+
+const requiredParams = ["eventName", "description"];
+function paramsValid(params) {
+  let paramNames = Object.keys(params);
+  for (let requiredParam of requiredParams) {
+    if (!paramNames.includes(requiredParam)) {
+      console.log("Missing required param ", requiredParam);
+      return false;
+    }
+  }
+  return true;
+}
+
+function invalidParams(callback) {
+  callback(null, {
+    statusCode: 400,
+    body: `The following parameters are required: ${requiredParams}`
+  });
+}
+
+function invalidMethod(callback) {
+  callback(null, {
+    statusCode: 400,
+    body: "This endpoint only accepts POSTs."
+  });
+}
