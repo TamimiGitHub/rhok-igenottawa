@@ -22,10 +22,12 @@ exports.handler = function(event, context, callback) {
   }
 
   let params = querystring.parse(new Buffer(event.body,'base64').toString('ascii'));
+  console.log(event)
+  console.log(param)
 
-  if (!paramsValid(params)) {
-    return invalidParams(callback);
-  }
+  // if (!paramsValid(params)) {
+  //   return invalidParams(callback);
+  // }
 
   // Create a db entry for an event 
   let entry = new EventItem()
