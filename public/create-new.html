@@ -61,23 +61,29 @@
           <label for="eventTitle">Event Title/Titre de l'événement</label>
           <input class="pure-input-1-2" id="eventTitle" type="text" required>
           <span class="pure-form-message">
-            This is a required field./Ceci est une requis.
+            Required field/Champ requis
           </span><br>
 
 
           <label for="location">Location including street address/Lieu et l'adresse complète</label>
           <input class="pure-input-1-2" id="location" type="text" required><br>
+		  
 
           <label for="eventDesc">Provide a brief description of your event/
             Inscrivez une brève description de votre événement</label>
           <textarea class="pure-input-1-2" required></textarea><br>
+		  
+		  
+		  
 
           <div class="pure-control-group">
             <label for="eventDate">Date</label>
             <input type="date" name="eventDate" id="eventDate" required>
           </div>
-
+		
           <label for="startTimeHour">Start time</label>
+		  <div class="pure-g">
+		  <div class="pure-u-1-10">
           <select name="startTimeHour" id="startTimeHour" size="1">
             <option value="00">00</option>
             <option value="01">01</option>
@@ -104,14 +110,22 @@
             <option value="22">22</option>
             <option value="23">23</option>
           </select>
+		  </div>
+		  
+		  <div class="pure-u-1-10">
           <select name="startTimeMinute" id="startTimeMinute" size="1">
             <option value="00min" selected>00</option>
             <option value="15min">15</option>
             <option value="30min">30</option>
             <option value="45min">45</option>
           </select>
+		  </div>
+		</div>  
+		  
 
           <label for="endTimeHour">End time</label>
+		  <div class="pure-g">
+		  	<div class="pure-u-1-10">
           <select name="endTimeHour" id="endTimeHour" size="1">
             <option value="00">00</option>
             <option value="01">01</option>
@@ -137,13 +151,18 @@
             <option value="21">21</option>
             <option value="22">22</option>
             <option value="23">23</option>
-          </select>
+          </select>		  
+		  </div>
+		  
+		<div class="pure-u-1-10">
           <select name="endTimeMinute" id="endTimeMinute" size="1">
             <option value="00min" selected>00</option>
             <option value="15min">15</option>
             <option value="30min">30</option>
             <option value="45min">45</option>
           </select>
+		</div>
+		</div>
 
           <label for="website">Event Website/Website de l'événement </label>
           <input class="pure-input-1-2" id="website" type="text"><br>
