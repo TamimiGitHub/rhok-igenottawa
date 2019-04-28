@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>iGen Ottawa - Create Event</title>
+  <title>iGen Ottawa - Post Event</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="pure-css/pure-min.css">
@@ -41,19 +41,28 @@
 
       <h1><img src="images/logo.png"></h1>
 
-      <h1>Create an event</h1>
+      <h1>Post an Event</h1>
 
       <form class="pure-form pure-form-aligned">
         <fieldset>
           <div class="pure-control-group">
-            <label for="eventTitle">Event Title</label>
-            <input class="pure-input-1-2" id="eventTitle" type="text" placeholder="Event Title" required>
-            <span class="pure-form-message-inline">This is a required field.</span>
+            <label for="eventTitle">Event Title<br>Titre de l'événement</label>
+            <input class="pure-input-1-2" id="eventTitle" type="text"required>
+            <span class="pure-form-message-inline">
+              This is a required field.
+              Ceci est une requis.
+            </span>
           </div>
 
           <div class="pure-control-group">
-            <label for="eventDesc">Event Description</label>
-            <textarea class="pure-input-1-2" placeholder="Event Description"></textarea>
+            <label for="website">Location including street address<br>Lieu et l'adresse complète</label>
+            <input class="pure-input-1-2" id="website" type="text">
+          </div>  
+
+          <div class="pure-control-group">
+            <label for="eventDesc">Provide a brief description of your event<br>
+                Inscrivez une brève description de votre événement</label>
+            <textarea class="pure-input-1-2"></textarea>
           </div>
 
           <div class="pure-control-group">
