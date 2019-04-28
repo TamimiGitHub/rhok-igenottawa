@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const EventItem = require('../models/eventItem')
+const EventItem = require('./models/eventItem.js')
  
 exports.handler = function(event, context, callback) {
   // see https://mongoosejs.com/docs/lambda.html

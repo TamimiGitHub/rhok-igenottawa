@@ -1,6 +1,6 @@
 require('dotenv').config()
 const mongoose = require('mongoose');
-const EventItem = require('../models/eventItem')
+const EventItem = require('./models/eventItem.js')
 const querystring = require('querystring')
 
 let uri = process.env.CONNECTION_STRING;
