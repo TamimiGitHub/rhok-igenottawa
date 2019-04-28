@@ -18,10 +18,10 @@ exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
 
   EventItem.find({}, {_id:0, eventName:1, description:1}).then((results) => {
-    const eventList = { events: results}
+    // const eventList = { events: results}
     callback(null, {
       statusCode: 200,
-      body: renderEventList(eventList)
+      body: renderEventList(results)
   });
   })
 };
@@ -39,10 +39,10 @@ const header = `
     <title>Album example for iGen</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="list.css" rel="stylesheet">
+    <link href="/list.css" rel="stylesheet">
   </head>
 
   <body>
@@ -64,16 +64,19 @@ const footer = `
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="bootstrap/js/jquery-slim.min.js"><\/script>')</script>
-<script src="bootstrap/js/popper.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrap/js/holder.min.js"></script>
+<script src="/bootstrap/js/popper.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/holder.min.js"></script>
 </body>
 </html>
 `
 
 function renderEventList(eventList) {
-  let events;
-  // TODO iterate over events
+  let events ='';
+  // TODO iterate over events) 
+  for (let event of eventList) {
+    events += renderEvent(event)
+  }
   return header + events + footer;
 }
 
@@ -83,13 +86,13 @@ function renderEvent(event) {
   <div class="card mb-4 box-shadow">
     <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
     <div class="card-body">
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">${event.eventName}</p>
+      <p class="card-text">${event.description}</p>
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+          <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
         </div>
-        <small class="text-muted">9 mins</small>
       </div>
     </div>
   </div>
