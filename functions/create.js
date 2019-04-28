@@ -23,7 +23,7 @@ exports.handler = function(event, context, callback) {
 
   let params = querystring.parse(new Buffer(event.body,'base64').toString('ascii'));
   console.log(event)
-  console.log(param)
+  console.log(params)
 
   // if (!paramsValid(params)) {
   //   return invalidParams(callback);
