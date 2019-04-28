@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>iGen Ottawa - Create Event</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="pure-css/pure-min.css">
+  <!--[if lte IE 8]>
+    <link rel="stylesheet" href="pure-css/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="pure-css/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <style>
+    .block {
+      display: block;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .max-width {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="pure-g justify-center max-width">
+    <div class="pure-u-1">
+
+      <h1><img src="images/logo.png"></h1>
+
+      <h1>Create an event</h1>
+
+      <form class="pure-form pure-form-aligned">
+        <fieldset>
+          <div class="pure-control-group">
+            <label for="eventTitle">Event Title</label>
+            <input class="pure-input-1-2" id="eventTitle" type="text" placeholder="Event Title" required>
+            <span class="pure-form-message-inline">This is a required field.</span>
+          </div>
+
+          <div class="pure-control-group">
+            <label for="eventDesc">Event Description</label>
+            <textarea class="pure-input-1-2" placeholder="Event Description"></textarea>
+          </div>
+
+          <div class="pure-control-group">
+            <label for="website">Event Website</label>
+            <input class="pure-input-1-2" id="website" type="text" placeholder="Website">
+          </div>
+
+          <div class="pure-control-group">
+            <label for="contactName">Contact Name</label>
+            <input class="pure-input-1-2" id="contactName" type="text" placeholder="Contact Name">
+          </div>
+
+          <div class="pure-control-group">
+            <label for="contactEmail">Contact Email Address</label>
+            <input class="pure-input-1-2" id="contactEmail" type="email" placeholder="Contact Email Address">
+          </div>
+
+          <div class="pure-controls">
+            <label for="termsAccepted" class="pure-checkbox">
+              <input id="termsAccepted" type="checkbox"> I've read the terms and conditions
+            </label>
+
+            <button type="submit" class="pure-button pure-button-primary">Create Event</button>
+          </div>
+        </fieldset>
+      </form>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
