@@ -47,6 +47,13 @@ const header = `
 
   <body>
 
+  
+
+  <div class="text-center">
+    <h1><img src="/images/logo.png"></h1>
+
+    <h1>Events List</h1>
+  </div>
 
   <div class="album py-5 bg-light">
   <div class="container">
