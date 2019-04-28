@@ -21,7 +21,12 @@ exports.handler = function(event, context, callback) {
     return invalidMethod(callback);
   }
 
-  let params = querystring.parse(new Buffer(event.body,'base64').toString('ascii'));
+  let querystring = event.body;
+  if (event.isBase64Encoded) {
+    querystring = new Buffer(event.body,'base64').toString('ascii');
+  }
+
+  let params = querystring.parse(querystring);
   console.log(event)
   console.log(params)
 
