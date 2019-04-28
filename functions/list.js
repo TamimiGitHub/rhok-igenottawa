@@ -1,7 +1,6 @@
 require('dotenv').config()
 const mongoose = require('mongoose');
 const EventItem = require('./models/eventItem.js')
-const fs = require('fs')
 
 let uri = process.env.CONNECTION_STRING;
 //Connect to db
@@ -17,8 +16,7 @@ mongoose.
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
 
-  EventItem.find({}, {_id:0, eventName:1, description:1}).then((results) => {
-    // const eventList = { events: results}
+  EventItem.find().then((results) => {
     callback(null, {
       statusCode: 200,
       body: renderEventList(results)
@@ -80,7 +78,6 @@ const footer = `
 
 function renderEventList(eventList) {
   let events ='';
-  // TODO iterate over events) 
   for (let event of eventList) {
     events += renderEvent(event)
   }
@@ -93,8 +90,8 @@ function renderEvent(event) {
   <div class="card mb-4 box-shadow">
     <img class="card-img-top" src="/images/${randomImage()}" alt="Card image cap">
     <div class="card-body">
-      <p class="card-text">${event.eventName}</p>
-      <p class="card-text">${event.description}</p>
+      <p class="card-text">${event.eventTitle}</p>
+      <p class="card-text">${event.eventDesc}</p>
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
           <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
