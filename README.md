@@ -24,7 +24,11 @@ npm install -g netlify-cli
 npm run dev
 ```
 
-Access the function at http://localhost:8888/.netlify/functions/app.
+Access the functions at http://localhost:8888/.netlify/functions/<function>.
+Access HTML in `public` at http://localhost:8888
 
 ## Deploying
 Just `git push`. Netlify runs the `build` script defined in `package.json.`
+
+## Production URL
+https://igenottawa.netlify.com
