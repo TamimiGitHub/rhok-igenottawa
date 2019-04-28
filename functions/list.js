@@ -90,7 +90,9 @@ function renderEvent(event) {
   <div class="card mb-4 box-shadow">
     <img class="card-img-top" src="/images/${randomImage()}" alt="Card image cap">
     <div class="card-body">
-      <p class="card-text">${event.eventTitle}</p>
+      <p class="card-text"><b>${event.eventTitle}</b></p>
+      <p class="card-text">${event.date}</p>
+      <p class="card-text">${event.startTimeHour}:${event.startTimeMinute} - ${event.endTimeHour}:${event.endTimeMinute}</p>
       <p class="card-text">${event.eventDesc}</p>
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
