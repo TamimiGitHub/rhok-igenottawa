@@ -105,7 +105,11 @@ function renderEvent(event) {
 }
 
 const images = [
-  'temp_image.png'
+  'temp_image.png',
+  'stock1.jpeg',
+  'stock2.jpeg',
+  'stock3.jpeg',
+  'stock4.jpg',
 ];
 function randomImage() {
   return images[Math.floor(Math.random() * images.length)];
