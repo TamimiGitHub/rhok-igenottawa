@@ -29,6 +29,7 @@ Access HTML in `public` at http://localhost:8888
 
 ## Deploying
 Just `git push`. Netlify runs the `build` script defined in `package.json.`
+List of deploys/status: https://app.netlify.com/sites/igenottawa/deploys
 
 ## Production URL
 https://igenottawa.netlify.com
