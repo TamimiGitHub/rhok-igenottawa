@@ -6,8 +6,17 @@ const collectionName = 'events'
 
 // Create Schema
 var eventSchema = new Schema({
-    eventName: 'String',
-    description: 'String',
+    eventTitle: 'String',
+    location: 'String',
+    eventDesc: 'String',
+    date: 'String',
+    startTimeHour: 'String',
+    startTimeMinute: 'String',
+    endTimeHour: 'String',
+    endTimeMinute: 'String',
+    website: 'String',
+    organizationName: 'String',
+    contactName: 'String'
 });
 
 module.exports = mongoose.model(collectionName, eventSchema);
