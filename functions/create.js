@@ -33,10 +33,7 @@ exports.handler = function(event, context, callback) {
   entry.description = params.description
   entry.save().then(() => {
       console.log("saved in db")
-      callback(null, {
-        statusCode: 200,
-        body: "Thank you for your submission! Your event is listed on the events list page"
-      });
+      success(callback);
     })
     .catch(err => console.log(err))
 };
@@ -64,5 +61,15 @@ function invalidMethod(callback) {
   callback(null, {
     statusCode: 400,
     body: "This endpoint only accepts POSTs."
+  });
+}
+
+function success(callback) {
+  callback(null, {
+    statusCode: 301,
+    headers: {
+      Location: 'list',
+    },
+    body: ''
   });
 }
