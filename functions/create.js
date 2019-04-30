@@ -86,7 +86,7 @@ function success(callback) {
   callback(null, {
     statusCode: 301,
     headers: {
-      Location: 'list',
+      Location: '/list',
     },
     body: ''
   });
