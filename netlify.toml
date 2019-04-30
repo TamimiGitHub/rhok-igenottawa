@@ -2,3 +2,21 @@
   command = "npm install"
   publish = "public"
   functions = "functions"
+
+# Redirect / to /list
+[[redirects]]
+  from = "/"
+  to = "/list"
+  status = 301
+
+# Rewrite /list to the list function
+[[redirects]]
+  from = "/list"
+  to = "/.netlify/functions/list"
+  status = 200
+
+# Rewrite /create to /create.html for consistency
+[[redirects]]
+  from = "/create"
+  to = "/create.html"
+  status = 200
