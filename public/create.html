@@ -61,23 +61,32 @@
           <label for="eventTitle">Event Title/Titre de l'événement</label>
           <input class="pure-input-1-2" id="eventTitle" name="eventTitle" type="text" required>
           <span class="pure-form-message">
-            Required field/Champ requis
+            Required field/Champ obligatoire
           </span><br>
 
 
-          <label for="location">Location including street address/Lieu et l'adresse complète</label>
-          <input class="pure-input-1-2" id="location" name="location" type="text" required><br>
+          <label for="location">Location (full address)/Lieu (adresse complète)</label>
+          <input class="pure-input-1-2" id="location" name="location" type="text" required>
+          <span class="pure-form-message">
+            Required field/Champ obligatoire
+          </span><br>
 
           <label for="eventDesc">Provide a brief description of your event/
-            Inscrivez une brève description de votre événement</label>
-          <textarea class="pure-input-1-2" name="eventDesc" required></textarea><br>
+            Insérez une brève description de votre événement</label>
+          <textarea class="pure-input-1-2" name="eventDesc" required></textarea>
+          <span class="pure-form-message">
+            Required field/Champ obligatoire
+          </span><br>
 
           <div class="pure-control-group">
             <label for="eventDate">Date</label>
             <input type="date" name="eventDate" id="eventDate" required>
+            <span class="pure-form-message">
+              Required field/Champ obligatoire
+            </span>
           </div>
 		
-          <label for="startTimeHour">Start time</label>
+          <label for="startTimeHour">Start time/Heure de départ</label>
 		  <div class="pure-g">
 		  <div class="pure-u-1-10">
           <select name="startTimeHour" id="startTimeHour" size="1">
@@ -110,16 +119,16 @@
 		  
 		  <div class="pure-u-1-10">
           <select name="startTimeMinute" id="startTimeMinute" size="1">
-            <option value="00min" selected>00</option>
-            <option value="15min">15</option>
-            <option value="30min">30</option>
-            <option value="45min">45</option>
+            <option value="00" selected>00</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
           </select>
 		  </div>
 		</div>  
 		  
 
-          <label for="endTimeHour">End time</label>
+          <label for="endTimeHour">End time/Heure de fin</label>
 		  <div class="pure-g">
 		  	<div class="pure-u-1-10">
           <select name="endTimeHour" id="endTimeHour" size="1">
@@ -160,26 +169,33 @@
 		</div>
 		</div>
 
-          <label for="website">Event Website/Website de l'événement </label>
+          <label for="website">Event Website/Site web de l'événement </label>
           <input class="pure-input-1-2" id="website" name="website" type="text"><br>
 
           <label for="organizationName">Organization Name/Nom de l’organisation</label>
           <input class="pure-input-1-2" id="organizationName" name="organizationName" type="text"><br>
 
-          <label for="contactName">Contact Name/Nom de la personne</label>
-          <input class="pure-input-1-2" id="contactName" name="contactName" type="text" required><br>
+          <label for="contactName">Contact Name/Nom du contact</label>
+          <input class="pure-input-1-2" id="contactName" name="contactName" type="text" required>
+          <span class="pure-form-message">
+            Required field/Champ obligatoire
+          </span><br>
 
-          <label for="contactEmail">Contact Email Address/Contact et courriel</label>
-          <input class="pure-input-1-2" id="contactEmail" name="contactEmail" type="email" required><br>
+          <label for="contactEmail">Contact Email Address/Addresse courriel du contact</label>
+          <input class="pure-input-1-2" id="contactEmail" name="contactEmail" type="email" required>
+          <span class="pure-form-message">
+            Required field/Champ obligatoire
+          </span><br>
 
           <label for="termsAccepted" class="pure-checkbox">
             <input id="termsAccepted" type="checkbox" required> I understand that this information will be made public and am
-            authorized to post it on behalf of my organization./
+            authorized to post it on behalf of my organization
+            <br>
             Je comprends que cette information sera partagée avec le public et je suis autorisé(e) à l’afficher au nom
             de mon organisation.
           </label><br>
 
-          <button type="submit" class="pure-button pure-button-primary">Post Event/Soumettre l'événement</button>
+          <button type="submit" class="pure-button pure-button-primary">Post Event/Publier l'événement</button>
     </div>
 
 
