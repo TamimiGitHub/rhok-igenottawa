@@ -48,7 +48,7 @@ const header = `
   
 
   <div class="text-center">
-    <h1><img src="/images/logo.png"></h1>
+    <h1><a href="https://igenottawa.ca"><img src="/images/logo.png" alt="iGen Ottawa Home"></a></h1>
 
     <h1>Events List</h1>
   </div>
