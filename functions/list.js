@@ -34,7 +34,7 @@ const header = `
     <meta name="author" content="">
     <!--link rel="icon" href="../../../../favicon.ico"-->
 
-    <title>Album example for iGen</title>
+    <title>iGen Ottawa Events Portal - List Events</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
