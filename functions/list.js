@@ -2,6 +2,7 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 const EventItem = require('./models/eventItem.js')
 
+const CreatePage = "https://igenottawa.netlify.com/create.html"
 let uri = process.env.CONNECTION_STRING;
 //Connect to db
 mongoose.
@@ -45,14 +46,12 @@ const header = `
 
   <body>
 
-  
-
   <div class="text-center">
     <h1><img src="/images/logo.png"></h1>
-
     <h1>Events List</h1>
+    <a href="${CreatePage}" type="button" class="btn btn-primary btn-lg">Post an event</a>
   </div>
-
+    
   <div class="album py-5 bg-light">
   <div class="container">
 
