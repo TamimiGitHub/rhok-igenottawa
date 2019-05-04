@@ -53,9 +53,12 @@ const header = `
 
   <div class="container">
 
-    <div>
-      <a class="home pure-button" href="https://igenottawaca.previews.rebel.com">Home</a>
-      <h1 class="text-center"><img src="/images/logo.png" alt="iGen Ottawa Logo"></h1>
+    <div class="pure-g">
+      <div class="pure-u-1 text-center logo-height"><img src="/images/logo.png" alt="iGen Ottawa Logo"></div>
+      <div class="pure-u-1 text-center">
+        <a class="pure-button" href="https://igenottawaca.previews.rebel.com">Home</a>
+        <a class="pure-button" href="/create">Post an Event</a>
+      </div>
     </div>
 
     <div class="text-center"><h1>Events List</h1></div>

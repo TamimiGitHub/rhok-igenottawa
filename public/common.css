@@ -1,7 +1,12 @@
-.home {
-  float: right;
+body {
+  background-color: rgb(248, 249, 250)
 }
 
 .text-center {
   text-align: center;
+}
+
+/* Control not-understood difference in pixel height of div containing logo between pages */
+.logo-height {
+  height: 55px;
 }
