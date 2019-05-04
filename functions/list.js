@@ -41,26 +41,29 @@ const header = `
 
     <!-- Custom styles for this template -->
     <link href="/list.css" rel="stylesheet">
+
+    <!-- Common styles for reuse across pages -->
+    <link href="/common.css" rel="stylesheet">
+
+    <!-- Pure CSS; consistent styling for Home button. -->
+    <link rel="stylesheet" href="pure-css/pure-min.css">
   </head>
 
   <body>
 
-  
-
-  <div class="text-center">
-    <h1><a href="https://igenottawa.ca"><img src="/images/logo.png" alt="iGen Ottawa Home"></a></h1>
-
-    <h1>Events List</h1>
-  </div>
-
-  <div class="album py-5 bg-light">
   <div class="container">
+
+    <div>
+      <a class="home pure-button" href="https://igenottawaca.previews.rebel.com">Home</a>
+      <h1 class="text-center"><img src="/images/logo.png" alt="iGen Ottawa Logo"></h1>
+    </div>
+
+    <div class="text-center"><h1>Events List</h1></div>
 
     <div class="row">
 `
 
 const footer = `
-</div>
 </div>
 </div>
 
