@@ -13,19 +13,10 @@
   <link rel="stylesheet" href="pure-css/grids-responsive-min.css">
   <!--<![endif]-->
 
+  <!-- Common styles for reuse across pages -->
+  <link href="/common.css" rel="stylesheet">
+
   <style>
-    .block {
-      display: block;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .justify-center {
-      justify-content: center;
-    }
-
     .max-width {
       max-width: 800px;
       margin: 0 auto;
@@ -48,10 +39,16 @@
 
 <body>
 
-  <div class="pure-g justify-center max-width">
+  <div class="pure-g max-width">
     <div class="pure-u-1">
 
-      <h1><img src="images/logo.png"></h1>
+      <div class="pure-g">
+        <div class="pure-u-1 text-center logo-height"><img src="/images/logo.png" alt="iGen Ottawa Logo"></div>
+        <div class="pure-u-1 text-center">
+          <a class="pure-button" href="https://igenottawaca.previews.rebel.com">Home</a>
+          <a class="pure-button" href="/list">Events List</a>
+        </div>
+      </div>
 
       <h1>Post an Event</h1>
 

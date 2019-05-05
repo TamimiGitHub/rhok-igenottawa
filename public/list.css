@@ -37,11 +37,3 @@ footer p {
 }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
-
-.text-center {
-  text-align: center;
-}
-
-body {
-  background-color: rgb(248, 249, 250);
-}
