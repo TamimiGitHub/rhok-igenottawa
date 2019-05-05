@@ -9,7 +9,7 @@ var eventSchema = new Schema({
     eventTitle: 'String',
     location: 'String',
     eventDesc: 'String',
-    date: 'String',
+    date: 'Date',
     startTimeHour: 'String',
     startTimeMinute: 'String',
     endTimeHour: 'String',
