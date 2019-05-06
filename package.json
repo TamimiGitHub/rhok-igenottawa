@@ -1,7 +1,7 @@
 {
   "name": "rhok-igenottawa",
   "version": "1.0.0",
-  "description": "This repo will hold the iGenEventsPortal &trade; that will be used for [iGenOttawa](https://igenottawaca.previews.rebel.com/)",
+  "description": "This repo will hold the iGenEventsPortal &trade; that will be used for [iGenOttawa](https://www.igenottawa.ca/)",
   "main": "index.js",
   "scripts": {
     "dev": "netlify dev -o"
