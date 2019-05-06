@@ -97,12 +97,11 @@ function renderEvent(event) {
   <div class="card mb-4 box-shadow">
     <img class="card-img-top" src="/images/${randomImage()}" alt="Card image cap">
     <div class="card-body">
-      <p class="card-text"><b>${event.eventTitle}</b></p>
-      <p class="card-text">${event.website}</p>
-      <!-- <p class="card-text">${event.organizationName}</p> -->
-      <p class="card-text">${dateFormat(Date(event.date), "dddd, mmmm dS, yyyy")}</p>
+      <h4 class="card-text"><b><a href="${event.website}" target="_blank">${event.eventTitle}</a></b></h4>
+      <p class="card-text">${event.organizationName}</p>
+      <br class="card-text">${dateFormat(Date(event.date), "dddd, mmmm dS, yyyy")}</br>
       <p class="card-text">${event.startTimeHour}:${event.startTimeMinute} - ${event.endTimeHour}:${event.endTimeMinute}</p>
-      <!-- <p class="card-text">${event.location}</p> -->
+      <p class="card-text">Location: ${event.location}</p>
       <p class="card-text">---------</p>
       <p class="card-text">${event.eventDesc}</p>
       <div class="d-flex justify-content-between align-items-center">
