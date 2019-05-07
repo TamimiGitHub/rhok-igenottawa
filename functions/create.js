@@ -47,6 +47,7 @@ exports.handler = function(event, context, callback) {
   entry.website = params.website
   entry.organizationName = params.organizationName
   entry.contactName = params.contactName
+  entry.contactEmail = params.contactEmail
   console.log(entry)
 
   entry.save().then(() => {

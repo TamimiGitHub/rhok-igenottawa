@@ -16,7 +16,8 @@ var eventSchema = new Schema({
     endTimeMinute: 'String',
     website: 'String',
     organizationName: 'String',
-    contactName: 'String'
+    contactName: 'String',
+    contactEmail: 'String'
 });
 
 module.exports = mongoose.model(collectionName, eventSchema);
