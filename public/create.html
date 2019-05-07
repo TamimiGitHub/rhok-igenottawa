@@ -56,27 +56,27 @@
         <fieldset>
 
           <label for="eventTitle">Event Title/Titre de l'événement</label>
-          <input class="pure-input-1-2" id="eventTitle" name="eventTitle" type="text" required>
+          <input class="pure-input-1-2" id="eventTitle" name="eventTitle" type="text" >
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
 
 
           <label for="location">Location and full address/Lieu et adresse complète</label>
-          <input class="pure-input-1-2" id="location" name="location" type="text" required>
+          <input class="pure-input-1-2" id="location" name="location" type="text" >
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
 
           <label for="eventDesc">Provide a brief description of your event/Insérez une brève description de votre événement</label>
-          <textarea class="pure-input-1-2" name="eventDesc" required></textarea>
+          <textarea class="pure-input-1-2" name="eventDesc" ></textarea>
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
 
           <div class="pure-control-group">
             <label for="eventDate">Date</label>
-            <input type="date" name="eventDate" id="eventDate" required>
+            <input type="date" name="eventDate" id="eventDate" >
           </div>
 		
           <label for="startTimeHour">Start time/Heure de départ</label>
@@ -166,22 +166,22 @@
           <input class="pure-input-1-2" id="website" name="website" type="text"><br>
 
           <label for="organizationName">Organization Name/Nom de l’organisation</label>
-          <input class="pure-input-1-2" id="organizationName" name="organizationName" type="text"><br>
+          <input class="pure-input-1-2" id="organizationName" name="organizationName" type="text" required><br>
 
           <label for="contactName">Contact Name/Nom du contact</label>
-          <input class="pure-input-1-2" id="contactName" name="contactName" type="text" required>
+          <input class="pure-input-1-2" id="contactName" name="contactName" type="text" >
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
 
           <label for="contactEmail">Contact Email Address/Addresse courriel du contact</label>
-          <input class="pure-input-1-2" id="contactEmail" name="contactEmail" type="email" required>
+          <input class="pure-input-1-2" id="contactEmail" name="contactEmail" type="email" >
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
-
+          <input type="file" name="cardImage" accept="image/*">
           <label for="termsAccepted" class="pure-checkbox">
-            <input id="termsAccepted" type="checkbox" required> I understand that this information will be made public and am
+            <input id="termsAccepted" type="checkbox" > I understand that this information will be made public and am
             authorized to post it on behalf of my organization
             <br>
             Je comprends que cette information sera partagée avec le public et je suis autorisé(e) à l’afficher au nom

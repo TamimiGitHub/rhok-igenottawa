@@ -2,6 +2,10 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 const EventItem = require('./models/eventItem.js')
 const querystring = require('querystring')
+// var cloudinary = require('cloudinary').v2
+
+// process.env.CLOUDINARY_URL
+// cloudinary.uploader.upload("my_picture.jpg", function(error, result) { console.log(result) });
 
 let uri = process.env.CONNECTION_STRING;
 //Connect to db
@@ -27,8 +31,7 @@ exports.handler = function(event, context, callback) {
   }
 
   let params = querystring.parse(qstring);
-  console.log(event)
-  console.log(params)
+  // console.log(params)
 
   // if (!paramsValid(params)) {
   //   return invalidParams(callback);
@@ -47,7 +50,6 @@ exports.handler = function(event, context, callback) {
   entry.website = params.website
   entry.organizationName = params.organizationName
   entry.contactName = params.contactName
-  console.log(entry)
 
   entry.save().then(() => {
       console.log("saved in db")
@@ -90,4 +92,13 @@ function success(callback) {
     },
     body: ''
   });
+}
+
+function uploadImage(file, options, callback){
+  cloudinary.uploader.unsigned_upload("../public/images/logo.png", "eventsportal", 
+    function(error, result) {console.log(result, error) });
+}
+
+function extractImage() {
+
 }
