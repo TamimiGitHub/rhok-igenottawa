@@ -58,11 +58,11 @@ const header = `
       <div class="pure-u-1 text-center logo-height"><img src="/images/logo.png" alt="iGen Ottawa Logo"></div>
       <div class="pure-u-1 text-center">
         <a class="pure-button" href="https://www.igenottawa.ca/">Home</a>
-        <a class="pure-button" href="/create">Post an Event</a>
+        <a class="pure-button" href="/create">Post an Event/Afficher un événement</a>
       </div>
     </div>
 
-    <div class="text-center"><h1>Events List</h1></div>
+    <div class="text-center"><h1>Events List/Liste des événements</h1></div>
 
     <div class="row">
 `
