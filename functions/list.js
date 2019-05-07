@@ -12,7 +12,7 @@ mongoose.
     useNewUrlParser: true
   })
   .then(() => console.log("Connection to MongoDB successful"))
-  .catch(err => console.error("Failed to connect to MongoDB"))
+  .catch(err => console.error("Failed to connect to MongoDB: ", err))
  
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
@@ -99,7 +99,7 @@ function renderEvent(event) {
     <div class="card-body">
       <h4 class="card-text"><b><a href="${event.website}" target="_blank">${event.eventTitle}</a></b></h4>
       <p class="card-text">${event.organizationName}</p>
-      <br class="card-text">${dateFormat(Date(event.date), "dddd, mmmm dS, yyyy")}</br>
+      <br class="card-text">${dateFormat(event.date, "dddd, mmmm dS, yyyy")}</br>
       <p class="card-text">${event.startTimeHour}:${event.startTimeMinute} - ${event.endTimeHour}:${event.endTimeMinute} <br> Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
       <p class="card-text">---------</p>
       <p class="card-text">${event.eventDesc}</p>
