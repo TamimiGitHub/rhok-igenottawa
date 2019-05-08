@@ -12,7 +12,7 @@ mongoose.
     useNewUrlParser: true
   })
   .then(() => console.log("Connection to MongoDB successful"))
-  .catch(err => console.error("Failed to connect to MongoDB"))
+  .catch(err => console.error("Failed to connect to MongoDB: ", err))
  
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
@@ -75,7 +75,7 @@ const footer = `
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="bootstrap/js/jquery-slim.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="bootstrap/js/jquery-slim.min.js"></script>
 <script src="/bootstrap/js/popper.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/bootstrap/js/holder.min.js"></script>
@@ -92,14 +92,20 @@ function renderEventList(eventList) {
 }
 
 function renderEvent(event) {
+  let email = ''
+  console.log(event.contactEmail)
+  if(event.contactEmail) {
+    email = ` <br> <u>Email:</u> <a href="mailto:${event.contactEmail}">${event.contactEmail}</a>`
+  }
+
   return `
   <div class="col-md-4">
   <div class="card mb-4 box-shadow">
     <img class="card-img-top" src="/images/${randomImage()}" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-text"><b><a href="${event.website}" target="_blank">${event.eventTitle}</a></b></h4>
-      <p class="card-text">${event.organizationName}</p>
-      <br class="card-text">${dateFormat(Date(event.date), "dddd, mmmm dS, yyyy")}</br>
+      <p class="card-text"><u>Organization Name:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
+      <br class="card-text">${dateFormat(event.date, "UTC:dddd, mmmm dS, yyyy")}</br>
       <p class="card-text">${event.startTimeHour}:${event.startTimeMinute} - ${event.endTimeHour}:${event.endTimeMinute} <br> Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
       <p class="card-text">---------</p>
       <p class="card-text">${event.eventDesc}</p>

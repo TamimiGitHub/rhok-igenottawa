@@ -16,7 +16,7 @@ mongoose.
     useNewUrlParser: true
   })
   .then(() => console.log("Connection to MongoDB successful"))
-  .catch(err => console.error("Failed to connect to MongoDB"))
+  .catch(err => console.error("Failed to connect to MongoDB: ", err))
  
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
@@ -50,6 +50,7 @@ exports.handler = function(event, context, callback) {
   entry.website = params.website
   entry.organizationName = params.organizationName
   entry.contactName = params.contactName
+  entry.contactEmail = params.contactEmail
 
   entry.save().then(() => {
       console.log("saved in db")
