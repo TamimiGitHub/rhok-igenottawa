@@ -48,7 +48,6 @@ exports.handler = function(event, context, callback) {
   entry.organizationName = params.organizationName
   entry.contactName = params.contactName
   entry.contactEmail = params.contactEmail
-  console.log(entry)
 
   entry.save().then(() => {
       console.log("saved in db")

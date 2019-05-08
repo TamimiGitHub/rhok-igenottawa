@@ -92,13 +92,19 @@ function renderEventList(eventList) {
 }
 
 function renderEvent(event) {
+  let email = ''
+  console.log(event.contactEmail)
+  if(event.contactEmail) {
+    email = ` <br> <u>Email:</u> <a href="mailto:${event.contactEmail}">${event.contactEmail}</a>`
+  }
+
   return `
   <div class="col-md-4">
   <div class="card mb-4 box-shadow">
     <img class="card-img-top" src="/images/${randomImage()}" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-text"><b><a href="${event.website}" target="_blank">${event.eventTitle}</a></b></h4>
-      <p class="card-text">${event.organizationName}</p>
+      <p class="card-text"><u>Organization Name:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
       <br class="card-text">${dateFormat(event.date, "UTC:dddd, mmmm dS, yyyy")}</br>
       <p class="card-text">${event.startTimeHour}:${event.startTimeMinute} - ${event.endTimeHour}:${event.endTimeMinute} <br> Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
       <p class="card-text">---------</p>
