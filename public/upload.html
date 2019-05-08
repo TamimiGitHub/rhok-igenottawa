@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Upload Test</title>
+
+    <script src="upload.js"></script>
+  </head>
+  <body>
+    <form id="form">
+      <input type="file" id="image" />
+      <input type="hidden" name="imageUrl" id="imageUrl" value="" />
+      <input id="button" type="submit" value="Submit">
+    </form>
+
+    <script>
+      var form = document.getElementById('form'); 
+      var image = document.getElementById('image');
+      var imageUrl = document.getElementById('imageUrl'); 
+
+      form.onsubmit = event => {
+        event.preventDefault();
+        uploadImage(image.files[0]).then(data => {
+          imageUrl.value = data.secure_url;
+          form.submit();
+        });
+      };
+    </script>
+  </body>
+</html>
