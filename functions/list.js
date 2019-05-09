@@ -101,7 +101,7 @@ function renderEvent(event) {
   return `
   <div class="col-md-4">
   <div class="card mb-4 box-shadow">
-    <img class="card-img-top" src="${imageUrlOrRandom(event)}" alt="Card image cap">
+    <img class="card-img-top" src="${renderImage(event.imageUrl)}" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-text"><b><a href="${event.website}" target="_blank">${event.eventTitle}</a></b></h4>
       <p class="card-text"><u>Organization Name:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
@@ -119,4 +119,15 @@ function renderEvent(event) {
   </div>
 </div>   
   `
+}
+
+// If URL is from Cloudinary, rewrite it to apply a resize transformation
+function renderImage(imageUrl) {
+  if (imageUrl == null) {
+    return imageUrl;
+  }
+  if (imageUrl.startsWith('https://res.cloudinary.com')) {
+    return imageUrl.replace(/(.+?\/image\/upload\/)(.+)/, '$1w_600/$2')
+  }
+  return imageUrl;
 }
