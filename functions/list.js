@@ -120,22 +120,3 @@ function renderEvent(event) {
 </div>   
   `
 }
-
-const images = [
-  'temp_image.png',
-  'stock1.jpeg',
-  'stock2.jpeg',
-  'stock3.jpeg',
-  'stock4.jpg',
-];
-
-function imageUrlOrRandom(event) {
-  if (event.imageUrl != null) {
-    return event.imageUrl;
-  }
-  return randomImage();
-}
-
-function randomImage() {
-  return '/images/' + images[Math.floor(Math.random() * images.length)];
-}
