@@ -106,7 +106,7 @@ function renderEvent(event) {
       <h4 class="card-text"><b><a href="${event.website}" target="_blank">${event.eventTitle}</a></b></h4>
       <p class="card-text"><u>Organization Name:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
       <br class="card-text">${dateFormat(event.date, "UTC:dddd, mmmm dS, yyyy")}</br>
-      <p class="card-text">${event.startTimeHour}:${event.startTimeMinute} - ${event.endTimeHour}:${event.endTimeMinute} <br> Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
+      <p class="card-text">${renderTime(event)}Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
       <p class="card-text">---------</p>
       <p class="card-text">${event.eventDesc}</p>
       <div class="d-flex justify-content-between align-items-center">
@@ -119,6 +119,13 @@ function renderEvent(event) {
   </div>
 </div>   
   `
+}
+
+function renderTime(event) {
+  if (event.startTimeHour || event.startTimeMinute || event.endTimeHour || event.endTimeMinute) {
+    return `${event.startTimeHour}:${event.startTimeMinute} - ${event.endTimeHour}:${event.endTimeMinute} <br> `;
+  }
+  return '';
 }
 
 // If URL is from Cloudinary, rewrite it to apply a resize transformation
