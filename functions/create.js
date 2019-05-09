@@ -27,7 +27,6 @@ exports.handler = function(event, context, callback) {
   }
 
   let params = querystring.parse(qstring);
-  // console.log(params)
 
   // if (!paramsValid(params)) {
   //   return invalidParams(callback);

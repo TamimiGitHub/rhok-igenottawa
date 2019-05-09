@@ -1,5 +1,5 @@
 function uploadInfo() {
-  return fetch('/.netlify/functions/upload')
+  return fetch('/upload')
   .then(response => {
     return response.json();
   })
