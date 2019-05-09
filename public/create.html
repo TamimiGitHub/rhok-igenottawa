@@ -272,10 +272,12 @@
     form.onsubmit = event => {
       event.preventDefault();
       loading.style.display = 'inline-block'
-      uploadImage(image.files[0]).then(data => {
-        imageUrl.value = data.secure_url;
-        form.submit();
-      });
+      if (image.files.length > 0) {
+        uploadImage(image.files[0]).then(data => {
+          imageUrl.value = data.secure_url;
+          form.submit();
+        });
+      }
     };
   </script>
 
