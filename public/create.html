@@ -249,7 +249,7 @@
             de mon organisation.
           </label><br>
 
-          <button type="submit" class="pure-button pure-button-primary">Post Event/Publier l'événement</button>
+          <button type="submit" id="submitBtn" class="pure-button pure-button-primary">Post Event/Publier l'événement</button>
           <div id="loading">
             <div class="lds-facebook"><div></div><div></div><div></div></div>
           </div>        
@@ -265,12 +265,14 @@
 
   <script>
     var form = document.getElementById('createForm'); 
+    var submitButton = document.getElementById('submitBtn'); 
     var image = document.getElementById('cardImage');
     var imageUrl = document.getElementById('imageUrl'); 
     var loading = document.getElementById('loading'); 
 
     form.onsubmit = event => {
       loading.style.visibility = 'visible';
+      submitButton.disabled = true;
 
       if (image.files.length > 0) {
         event.preventDefault();
@@ -283,6 +285,7 @@
 
     window.onbeforeunload = event => {
       loading.style.visibility = 'hidden';
+      submitButton.disabled = false;
     }
   </script>
 
