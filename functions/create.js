@@ -51,6 +51,7 @@ exports.handler = function(event, context, callback) {
   entry.organizationName = params.organizationName
   entry.contactName = params.contactName
   entry.contactEmail = params.contactEmail
+  entry.imageUrl = params.imageUrl
 
   entry.save().then(() => {
       console.log("saved in db")
@@ -95,11 +96,11 @@ function success(callback) {
   });
 }
 
-function uploadImage(file, options, callback){
-  cloudinary.uploader.unsigned_upload("../public/images/logo.png", "eventsportal", 
-    function(error, result) {console.log(result, error) });
-}
+// function uploadImage(file, options, callback){
+//   cloudinary.uploader.unsigned_upload("../public/images/logo.png", "eventsportal", 
+//     function(error, result) {console.log(result, error) });
+// }
 
-function extractImage() {
+// function extractImage() {
 
-}
+// }

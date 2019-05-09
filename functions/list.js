@@ -101,7 +101,7 @@ function renderEvent(event) {
   return `
   <div class="col-md-4">
   <div class="card mb-4 box-shadow">
-    <img class="card-img-top" src="/images/${randomImage()}" alt="Card image cap">
+    <img class="card-img-top" src="${imageUrlOrRandom(event)}" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-text"><b><a href="${event.website}" target="_blank">${event.eventTitle}</a></b></h4>
       <p class="card-text"><u>Organization Name:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
@@ -128,6 +128,14 @@ const images = [
   'stock3.jpeg',
   'stock4.jpg',
 ];
+
+function imageUrlOrRandom(event) {
+  if (event.imageUrl != null) {
+    return event.imageUrl;
+  }
+  return randomImage();
+}
+
 function randomImage() {
-  return images[Math.floor(Math.random() * images.length)];
+  return '/images/' + images[Math.floor(Math.random() * images.length)];
 }
