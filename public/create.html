@@ -33,7 +33,52 @@
     [type="date"]::-webkit-calendar-picker-indicator {
       opacity: 0;
     }
+
+    #loading {
+      visibility: hidden;
+    }
+
+    /* Loading indicator */
+    .lds-facebook {
+      display: inline-block;
+      position: relative;
+      width: 64px;
+      height: 64px;
+    }
+    .lds-facebook div {
+      display: inline-block;
+      position: absolute;
+      left: 6px;
+      width: 13px;
+      background: #000;
+      animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+    }
+    .lds-facebook div:nth-child(1) {
+      left: 6px;
+      animation-delay: -0.24s;
+    }
+    .lds-facebook div:nth-child(2) {
+      left: 26px;
+      animation-delay: -0.12s;
+    }
+    .lds-facebook div:nth-child(3) {
+      left: 45px;
+      animation-delay: 0;
+    }
+    @keyframes lds-facebook {
+      0% {
+        top: 6px;
+        height: 51px;
+      }
+      50%, 100% {
+        top: 19px;
+        height: 26px;
+      }
+    }
+
   </style>
+
+  <script src="upload.js"></script>
 
 </head>
 
@@ -52,7 +97,7 @@
 
       <h1>Post an Event/Afficher un événement</h1>
 
-      <form class="pure-form pure-form-stacked" action="/.netlify/functions/create" method="POST">
+      <form id="createForm" class="pure-form pure-form-stacked" action="/.netlify/functions/create" method="POST">
         <fieldset>
 
           <label for="eventTitle">Event Title/Titre de l'événement</label>
@@ -78,11 +123,15 @@
             <label for="eventDate">Date</label>
             <input type="date" name="eventDate" id="eventDate" required>
           </div>
+          <span class="pure-form-message">
+            Required field/Champ obligatoire
+          </span><br>
 		
           <label for="startTimeHour">Start time/Heure de départ</label>
 		  <div class="pure-g">
 		  <div class="pure-u-1-10">
           <select name="startTimeHour" id="startTimeHour" size="1">
+            <option selected></option>
             <option value="00">00</option>
             <option value="01">01</option>
             <option value="02">02</option>
@@ -93,7 +142,7 @@
             <option value="07">07</option>
             <option value="08">08</option>
             <option value="09">09</option>
-            <option value="10" selected>10</option>
+            <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
             <option value="13">13</option>
@@ -112,7 +161,8 @@
 		  
 		  <div class="pure-u-1-10">
           <select name="startTimeMinute" id="startTimeMinute" size="1">
-            <option value="00" selected>00</option>
+            <option selected></option>
+            <option value="00">00</option>
             <option value="15">15</option>
             <option value="30">30</option>
             <option value="45">45</option>
@@ -125,6 +175,7 @@
 		  <div class="pure-g">
 		  	<div class="pure-u-1-10">
           <select name="endTimeHour" id="endTimeHour" size="1">
+            <option selected></option>
             <option value="00">00</option>
             <option value="01">01</option>
             <option value="02">02</option>
@@ -140,7 +191,7 @@
             <option value="12">12</option>
             <option value="13">13</option>
             <option value="14">14</option>
-            <option value="15" selected>15</option>
+            <option value="15">15</option>
             <option value="16">16</option>
             <option value="17">17</option>
             <option value="18">18</option>
@@ -154,7 +205,8 @@
 		  
 		<div class="pure-u-1-10">
           <select name="endTimeMinute" id="endTimeMinute" size="1">
-            <option value="00" selected>00</option>
+            <option selected></option>
+            <option value="00">00</option>
             <option value="15">15</option>
             <option value="30">30</option>
             <option value="45">45</option>
@@ -166,7 +218,10 @@
           <input class="pure-input-1-2" id="website" name="website" type="text"><br>
 
           <label for="organizationName">Organization Name/Nom de l’organisation</label>
-          <input class="pure-input-1-2" id="organizationName" name="organizationName" type="text" required><br>
+          <input class="pure-input-1-2" id="organizationName" name="organizationName" type="text" required>
+          <span class="pure-form-message">
+            Required field/Champ obligatoire
+          </span><br>
 
           <label for="contactName">Contact Name/Nom du contact</label>
           <input class="pure-input-1-2" id="contactName" name="contactName" type="text" required>
@@ -180,6 +235,16 @@
             Required field/Champ obligatoire
           </span><br>
 
+          <label for="cardImage">Image</label>
+          <!-- Deliberately no name attribute so it is not submitted -->
+          <input class="pure-input-1-2" type="file" id="cardImage" accept="image/*">
+          <span class="pure-form-message">
+            Upload a .jpg or .png file under 5 MB in size. Subir un fichier .jpg ou .png de moins de 5 mo.
+          </span><br>
+
+          <!-- This is set by JS at bottom of page -->
+          <input type="hidden" name="imageUrl" id="imageUrl" value="" />
+
           <label for="termsAccepted" class="pure-checkbox">
             <input id="termsAccepted" type="checkbox" required> I understand that this information will be made public and am
             authorized to post it on behalf of my organization
@@ -188,7 +253,10 @@
             de mon organisation.
           </label><br>
 
-          <button type="submit" class="pure-button pure-button-primary">Post Event/Publier l'événement</button>
+          <button type="submit" id="submitBtn" class="pure-button pure-button-primary">Post Event/Publier l'événement</button>
+          <div id="loading">
+            <div class="lds-facebook"><div></div><div></div><div></div></div>
+          </div>        
     </div>
 
 
@@ -198,6 +266,32 @@
   </div>
 
   </div>
+
+  <script>
+    var form = document.getElementById('createForm'); 
+    var submitButton = document.getElementById('submitBtn'); 
+    var image = document.getElementById('cardImage');
+    var imageUrl = document.getElementById('imageUrl'); 
+    var loading = document.getElementById('loading'); 
+
+    form.onsubmit = event => {
+      loading.style.visibility = 'visible';
+      submitButton.disabled = true;
+
+      if (image.files.length > 0) {
+        event.preventDefault();
+        uploadImage(image.files[0]).then(data => {
+          imageUrl.value = data.secure_url;
+          form.submit();
+        });
+      }
+    };
+
+    window.onbeforeunload = event => {
+      loading.style.visibility = 'hidden';
+      submitButton.disabled = false;
+    }
+  </script>
 
 </body>
 

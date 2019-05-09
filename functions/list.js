@@ -101,12 +101,12 @@ function renderEvent(event) {
   return `
   <div class="col-md-4">
   <div class="card mb-4 box-shadow">
-    <img class="card-img-top" src="/images/${randomImage()}" alt="Card image cap">
+    <img class="card-img-top" src="${renderImage(event.imageUrl)}" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-text"><b><a href="${event.website}" target="_blank">${event.eventTitle}</a></b></h4>
       <p class="card-text"><u>Organization Name:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
       <br class="card-text">${dateFormat(event.date, "UTC:dddd, mmmm dS, yyyy")}</br>
-      <p class="card-text">${event.startTimeHour}:${event.startTimeMinute} - ${event.endTimeHour}:${event.endTimeMinute} <br> Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
+      <p class="card-text">${renderTime(event)}Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
       <p class="card-text">---------</p>
       <p class="card-text">${event.eventDesc}</p>
       <div class="d-flex justify-content-between align-items-center">
@@ -121,13 +121,20 @@ function renderEvent(event) {
   `
 }
 
-const images = [
-  'temp_image.png',
-  'stock1.jpeg',
-  'stock2.jpeg',
-  'stock3.jpeg',
-  'stock4.jpg',
-];
-function randomImage() {
-  return images[Math.floor(Math.random() * images.length)];
+function renderTime(event) {
+  if (event.startTimeHour || event.startTimeMinute || event.endTimeHour || event.endTimeMinute) {
+    return `${event.startTimeHour}:${event.startTimeMinute} - ${event.endTimeHour}:${event.endTimeMinute} <br> `;
+  }
+  return '';
+}
+
+// If URL is from Cloudinary, rewrite it to apply a resize transformation
+function renderImage(imageUrl) {
+  if (imageUrl == null) {
+    return imageUrl;
+  }
+  if (imageUrl.startsWith('https://res.cloudinary.com')) {
+    return imageUrl.replace(/(.+?\/image\/upload\/)(.+)/, '$1w_600/$2')
+  }
+  return imageUrl;
 }

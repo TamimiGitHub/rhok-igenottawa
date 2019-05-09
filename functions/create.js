@@ -27,8 +27,6 @@ exports.handler = function(event, context, callback) {
   }
 
   let params = querystring.parse(qstring);
-  console.log(event)
-  console.log(params)
 
   // if (!paramsValid(params)) {
   //   return invalidParams(callback);
@@ -48,6 +46,7 @@ exports.handler = function(event, context, callback) {
   entry.organizationName = params.organizationName
   entry.contactName = params.contactName
   entry.contactEmail = params.contactEmail
+  entry.imageUrl = imageUrlOrRandom(params.imageUrl)
 
   entry.save().then(() => {
       console.log("saved in db")
@@ -90,4 +89,23 @@ function success(callback) {
     },
     body: ''
   });
+}
+
+function imageUrlOrRandom(imageUrl) {
+  if (imageUrl != null && imageUrl.length > 0) {
+    return imageUrl;
+  }
+  return randomImage();
+}
+
+const images = [
+  'temp_image.png',
+  'stock1.jpeg',
+  'stock2.jpeg',
+  'stock3.jpeg',
+  'stock4.jpg',
+];
+
+function randomImage() {
+  return '/images/' + images[Math.floor(Math.random() * images.length)];
 }

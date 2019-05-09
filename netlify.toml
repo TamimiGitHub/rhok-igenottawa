@@ -15,6 +15,13 @@
   to = "/.netlify/functions/list"
   status = 200
 
+# Rewrite /upload to the list function
+[[redirects]]
+  from = "/upload"
+  to = "/.netlify/functions/upload"
+  status = 200
+
+
 # Rewrite /create to /create.html for consistency
 [[redirects]]
   from = "/create"
