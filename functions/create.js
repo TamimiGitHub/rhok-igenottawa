@@ -2,6 +2,7 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 const EventItem = require('./models/eventItem.js')
 const querystring = require('querystring')
+const htmlEscape = require('escape-html')
 
 let uri = process.env.CONNECTION_STRING;
 //Connect to db
@@ -34,19 +35,19 @@ exports.handler = function(event, context, callback) {
 
   // Create a db entry for an event 
   let entry = new EventItem()
-  entry.eventTitle = params.eventTitle
-  entry.location = params.location
-  entry.eventDesc = params.eventDesc
-  entry.date = params.eventDate
-  entry.startTimeHour = params.startTimeHour
-  entry.startTimeMinute = params.startTimeMinute
-  entry.endTimeHour = params.endTimeHour
-  entry.endTimeMinute = params.endTimeMinute
-  entry.website = params.website
-  entry.organizationName = params.organizationName
-  entry.contactName = params.contactName
-  entry.contactEmail = params.contactEmail
-  entry.imageUrl = imageUrlOrRandom(params.imageUrl)
+  entry.eventTitle = htmlEscape(params.eventTitle)
+  entry.location = htmlEscape(params.location)
+  entry.eventDesc = htmlEscape(params.eventDesc)
+  entry.date = htmlEscape(params.eventDate)
+  entry.startTimeHour = htmlEscape(params.startTimeHour)
+  entry.startTimeMinute = htmlEscape(params.startTimeMinute)
+  entry.endTimeHour = htmlEscape(params.endTimeHour)
+  entry.endTimeMinute = htmlEscape(params.endTimeMinute)
+  entry.website = htmlEscape(params.website)
+  entry.organizationName = htmlEscape(params.organizationName)
+  entry.contactName = htmlEscape(params.contactName)
+  entry.contactEmail = htmlEscape(params.contactEmail)
+  entry.imageUrl = imageUrlOrRandom(htmlEscape(params.imageUrl))
 
   entry.save().then(() => {
       console.log("saved in db")

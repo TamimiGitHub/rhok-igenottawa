@@ -93,7 +93,6 @@ function renderEventList(eventList) {
 
 function renderEvent(event) {
   let email = ''
-  console.log(event.contactEmail)
   if(event.contactEmail) {
     email = ` <br> <u>Email:</u> <a href="mailto:${event.contactEmail}">${event.contactEmail}</a>`
   }
