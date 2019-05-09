@@ -33,6 +33,49 @@
     [type="date"]::-webkit-calendar-picker-indicator {
       opacity: 0;
     }
+
+    #loading {
+      display: none;
+    }
+
+    /* Loading indicator */
+    .lds-facebook {
+      display: inline-block;
+      position: relative;
+      width: 64px;
+      height: 64px;
+    }
+    .lds-facebook div {
+      display: inline-block;
+      position: absolute;
+      left: 6px;
+      width: 13px;
+      background: #000;
+      animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+    }
+    .lds-facebook div:nth-child(1) {
+      left: 6px;
+      animation-delay: -0.24s;
+    }
+    .lds-facebook div:nth-child(2) {
+      left: 26px;
+      animation-delay: -0.12s;
+    }
+    .lds-facebook div:nth-child(3) {
+      left: 45px;
+      animation-delay: 0;
+    }
+    @keyframes lds-facebook {
+      0% {
+        top: 6px;
+        height: 51px;
+      }
+      50%, 100% {
+        top: 19px;
+        height: 26px;
+      }
+    }
+
   </style>
 
   <script src="upload.js"></script>
@@ -58,28 +101,31 @@
         <fieldset>
 
           <label for="eventTitle">Event Title/Titre de l'événement</label>
-          <input class="pure-input-1-2" id="eventTitle" name="eventTitle" type="text" >
+          <input class="pure-input-1-2" id="eventTitle" name="eventTitle" type="text" required>
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
 
 
           <label for="location">Location and full address/Lieu et adresse complète</label>
-          <input class="pure-input-1-2" id="location" name="location" type="text" >
+          <input class="pure-input-1-2" id="location" name="location" type="text" required>
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
 
           <label for="eventDesc">Provide a brief description of your event/Insérez une brève description de votre événement</label>
-          <textarea class="pure-input-1-2" name="eventDesc" ></textarea>
+          <textarea class="pure-input-1-2" name="eventDesc" required></textarea>
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
 
           <div class="pure-control-group">
             <label for="eventDate">Date</label>
-            <input type="date" name="eventDate" id="eventDate" >
+            <input type="date" name="eventDate" id="eventDate" required>
           </div>
+          <span class="pure-form-message">
+            Required field/Champ obligatoire
+          </span><br>
 		
           <label for="startTimeHour">Start time/Heure de départ</label>
 		  <div class="pure-g">
@@ -95,7 +141,7 @@
             <option value="07">07</option>
             <option value="08">08</option>
             <option value="09">09</option>
-            <option value="10" selected>10</option>
+            <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
             <option value="13">13</option>
@@ -114,7 +160,7 @@
 		  
 		  <div class="pure-u-1-10">
           <select name="startTimeMinute" id="startTimeMinute" size="1">
-            <option value="00" selected>00</option>
+            <option value="00">00</option>
             <option value="15">15</option>
             <option value="30">30</option>
             <option value="45">45</option>
@@ -142,7 +188,7 @@
             <option value="12">12</option>
             <option value="13">13</option>
             <option value="14">14</option>
-            <option value="15" selected>15</option>
+            <option value="15">15</option>
             <option value="16">16</option>
             <option value="17">17</option>
             <option value="18">18</option>
@@ -156,7 +202,7 @@
 		  
 		<div class="pure-u-1-10">
           <select name="endTimeMinute" id="endTimeMinute" size="1">
-            <option value="00" selected>00</option>
+            <option value="00">00</option>
             <option value="15">15</option>
             <option value="30">30</option>
             <option value="45">45</option>
@@ -168,16 +214,16 @@
           <input class="pure-input-1-2" id="website" name="website" type="text"><br>
 
           <label for="organizationName">Organization Name/Nom de l’organisation</label>
-          <input class="pure-input-1-2" id="organizationName" name="organizationName" type="text" required><br>
+          <input class="pure-input-1-2" id="organizationName" name="organizationName" type="text"><br>
 
           <label for="contactName">Contact Name/Nom du contact</label>
-          <input class="pure-input-1-2" id="contactName" name="contactName" type="text" >
+          <input class="pure-input-1-2" id="contactName" name="contactName" type="text" required>
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
 
           <label for="contactEmail">Contact Email Address/Addresse courriel du contact</label>
-          <input class="pure-input-1-2" id="contactEmail" name="contactEmail" type="email" >
+          <input class="pure-input-1-2" id="contactEmail" name="contactEmail" type="email" required>
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
@@ -193,7 +239,7 @@
           <input type="hidden" name="imageUrl" id="imageUrl" value="" />
 
           <label for="termsAccepted" class="pure-checkbox">
-            <input id="termsAccepted" type="checkbox" > I understand that this information will be made public and am
+            <input id="termsAccepted" type="checkbox" required> I understand that this information will be made public and am
             authorized to post it on behalf of my organization
             <br>
             Je comprends que cette information sera partagée avec le public et je suis autorisé(e) à l’afficher au nom
@@ -201,6 +247,9 @@
           </label><br>
 
           <button type="submit" class="pure-button pure-button-primary">Post Event/Publier l'événement</button>
+          <div id="loading">
+            <div class="lds-facebook"><div></div><div></div><div></div></div>
+          </div>        
     </div>
 
 
@@ -215,9 +264,11 @@
     var form = document.getElementById('createForm'); 
     var image = document.getElementById('cardImage');
     var imageUrl = document.getElementById('imageUrl'); 
+    var loading = document.getElementById('loading'); 
 
     form.onsubmit = event => {
       event.preventDefault();
+      loading.style.display = 'inline-block'
       uploadImage(image.files[0]).then(data => {
         imageUrl.value = data.secure_url;
         form.submit();
