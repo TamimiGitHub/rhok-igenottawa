@@ -35,6 +35,8 @@
     }
   </style>
 
+  <script src="upload.js"></script>
+
 </head>
 
 <body>
@@ -52,7 +54,7 @@
 
       <h1>Post an Event/Afficher un événement</h1>
 
-      <form class="pure-form pure-form-stacked" action="/.netlify/functions/create" method="POST">
+      <form id="createForm" class="pure-form pure-form-stacked" action="/.netlify/functions/create" method="POST">
         <fieldset>
 
           <label for="eventTitle">Event Title/Titre de l'événement</label>
@@ -179,7 +181,17 @@
           <span class="pure-form-message">
             Required field/Champ obligatoire
           </span><br>
-          <input type="file" name="cardImage" accept="image/*">
+
+          <label for="cardImage">Image</label>
+          <!-- Deliberately no name attribute so it is not submitted -->
+          <input class="pure-input-1-2" type="file" id="cardImage" accept="image/*">
+          <span class="pure-form-message">
+            Upload a .jpg, .png, or .gif file under 5 MB in size. Téléchargez un fichier .jpg, .png ou .gif de moins de 5 MB
+          </span><br>
+
+          <!-- This is set by JS at bottom of page -->
+          <input type="hidden" name="imageUrl" id="imageUrl" value="" />
+
           <label for="termsAccepted" class="pure-checkbox">
             <input id="termsAccepted" type="checkbox" > I understand that this information will be made public and am
             authorized to post it on behalf of my organization
@@ -198,6 +210,20 @@
   </div>
 
   </div>
+
+  <script>
+    var form = document.getElementById('createForm'); 
+    var image = document.getElementById('cardImage');
+    var imageUrl = document.getElementById('imageUrl'); 
+
+    form.onsubmit = event => {
+      event.preventDefault();
+      uploadImage(image.files[0]).then(data => {
+        imageUrl.value = data.secure_url;
+        form.submit();
+      });
+    };
+  </script>
 
 </body>
 
