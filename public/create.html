@@ -124,8 +124,9 @@
           </span><br>
 
           <label for="eventDesc">Provide a brief description of your event/Insérez une brève description de votre événement</label>
-          <textarea class="pure-input-1-2" name="eventDesc" required></textarea>
+          <textarea class="pure-input-1-2" name="eventDesc" id="eventDesc" required maxlength="400"></textarea>
           <span class="pure-form-message">
+            <span id="eventDescChars">0</span>/400<br>
             Required field/Champ obligatoire
           </span><br>
 
@@ -300,6 +301,21 @@
     window.onbeforeunload = event => {
       loading.style.visibility = 'hidden';
       submitButton.disabled = false;
+    }
+  </script>
+
+
+  <script>
+    var description = document.getElementById('eventDesc'); 
+    var charCount = document.getElementById('eventDescChars'); 
+    updateCharCount(); // update on load
+
+    description.onkeyup = event => {
+      updateCharCount()
+    }
+
+    function updateCharCount() {
+      charCount.innerText = description.value.length
     }
   </script>
 
