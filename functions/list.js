@@ -2,6 +2,7 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 const EventItem = require('./models/eventItem.js')
 var dateFormat = require('dateformat');
+const normalizeUrl = require('normalize-url');
 
 let uri = process.env.CONNECTION_STRING;
 //Connect to db
@@ -93,8 +94,13 @@ function renderEventList(eventList) {
 
 function renderEvent(event) {
   let email = ''
+  let website = event.website
   if(event.contactEmail) {
     email = ` <br> <u>Email:</u> <a href="mailto:${event.contactEmail}">${event.contactEmail}</a>`
+  }
+
+  if(event.website) {
+    website = normalizeUrl(event.website)
   }
 
   return `
@@ -102,7 +108,7 @@ function renderEvent(event) {
   <div class="card mb-4 box-shadow">
     <img class="card-img-top" src="${renderImage(event.imageUrl)}" alt="Card image cap">
     <div class="card-body">
-      <h4 class="card-text"><b><a href="${event.website}" target="_blank">${event.eventTitle}</a></b></h4>
+      <h4 class="card-text"><b><a href="${website}" target="_blank">${event.eventTitle}</a></b></h4>
       <p class="card-text"><u>Organization Name:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
       <br class="card-text">${dateFormat(event.date, "UTC:dddd, mmmm dS, yyyy")}</br>
       <p class="card-text">${renderTime(event)}Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
