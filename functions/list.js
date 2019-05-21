@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const EventItem = require('./models/eventItem.js')
 var dateFormat = require('dateformat');
 const normalizeUrl = require('normalize-url');
+const linkifyUrls = require('linkify-urls');
 
 let uri = process.env.CONNECTION_STRING;
 //Connect to db
@@ -134,7 +135,13 @@ function renderTime(event) {
 }
 
 function renderDesc(desc) {
-  return desc.trim().replace(/\n/g, '<br>');
+  // Replace newlines in description with brs to render multiline descriptions
+  desc = desc.trim().replace(/\n/g, '<br>');
+
+  // linkify-urls
+  desc = linkifyUrls(desc, {attributes: {target: "_blank"} })
+
+  return desc
 }
 
 // If URL is from Cloudinary, rewrite it to apply a resize transformation
