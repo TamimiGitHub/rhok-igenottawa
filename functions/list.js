@@ -19,7 +19,7 @@ mongoose.
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
 
-  EventItem.find().sort( {date: 1} ).then((results) => {
+  EventItem.find().sort( {date: -1} ).then((results) => {
     callback(null, {
       statusCode: 200,
       body: renderEventList(results)
