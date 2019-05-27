@@ -65,8 +65,7 @@ const header = `
     </div>
 
     <div class="text-center"><h1>Events List/Liste des événements</h1></div>
-
-    <div class="row">
+    <div class="card-columns">
 `
 
 const footer = `
@@ -105,25 +104,23 @@ function renderEvent(event) {
   }
 
   return `
-  <div class="col-md-4">
-  <div class="card mb-4 box-shadow">
-    <img class="card-img-top" src="${renderImage(event.imageUrl)}" alt="Card image cap">
-    <div class="card-body">
-      <h4 class="card-text"><b><a href="${website}" target="_blank">${event.eventTitle}</a></b></h4>
-      <p class="card-text"><u>Organization Name:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
-      <br class="card-text">${dateFormat(event.date, "UTC:dddd, mmmm dS, yyyy")}</br>
-      <p class="card-text">${renderTime(event)}Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
-      <p class="card-text">---------</p>
-      <p class="card-text">${renderDesc(event.eventDesc)}</p>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="btn-group">
-          <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+    <div class="card">
+      <img class="card-img-top" src="${renderImage(event.imageUrl)}" alt="Card image cap">
+      <div class="card-body">
+        <h4 class="card-title"><b><a href="${website}" target="_blank">${event.eventTitle}</a></b></h4>
+        <p class="card-text"><u>Organization Name:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
+        <br class="card-text">${dateFormat(event.date, "UTC:dddd, mmmm dS, yyyy")}</br>
+        <p class="card-text">${renderTime(event)}Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
+        <p class="card-text">---------</p>
+        <p class="card-text">${renderDesc(event.eventDesc)}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>   
   `
 }
 
