@@ -20,6 +20,9 @@ API_SECRET=<Cloudinary API secret>
 CLOUD_NAME=<Cloudindary cloud name>
 ```
 
+When submitting content locally/testing, please use a different Mongo collection. 
+Set the following env var: `EVENT_COLLECTION=<value that is not 'events'>`
+
 ```
 npm install
 npm install -g netlify-cli
