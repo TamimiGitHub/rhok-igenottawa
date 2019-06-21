@@ -22,7 +22,8 @@ exports.handler = function(event, context, callback) {
   EventItem.find().sort( {date: -1} ).then((results) => {
     callback(null, {
       statusCode: 200,
-      body: renderEventList(results)
+      // body: renderEventList(results)
+      body: renderSearchListByDate(results)
   });
   })
 };
@@ -84,6 +85,23 @@ const footer = `
 </html>
 `
 
+function filterByDateRange(eventList){
+  let startDate = new Date(2019, 5, 8);
+  let endDate = new Date(2019, 6, 20)
+  var filteredArray = eventList.filter(event => event.date >= startDate && event.date <= endDate); //> = after < = before <= syntax
+
+  return filteredArray;
+}
+
+function renderSearchListByDate(eventList){
+  var searchResults = filterByDateRange(eventList); 
+  let events ='';
+  for (let event of searchResults) {
+    events += renderEvent(event)
+  } 
+  return header + events + footer;  
+}
+
 function renderEventList(eventList) {
   let events ='';
   for (let event of eventList) {
@@ -108,7 +126,7 @@ function renderEvent(event) {
       <img class="card-img-top" src="${renderImage(event.imageUrl)}" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title"><b><a href="${website}" target="_blank">${event.eventTitle}</a></b></h4>
-        <p class="card-text"><u>Organization Name:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
+        <p class="card-text"><u>Organization Name/Nom de l'Organisation:</u> ${event.organizationName} <br> <u>Contact Name:</u> ${event.contactName}${email}</p>
         <br class="card-text">${dateFormat(event.date, "UTC:dddd, mmmm dS, yyyy")}</br>
         <p class="card-text">${renderTime(event)}Location: ${event.location} <a href="http://maps.google.com?q=${event.location}" target="_blank">(map)</a></p>
         <p class="card-text">---------</p>
