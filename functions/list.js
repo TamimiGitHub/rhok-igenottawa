@@ -86,8 +86,8 @@ const footer = `
 `
 
 function filterByDateRange(eventList){
-  let startDate = new Date(2019, 5, 8);
-  let endDate = new Date(2019, 6, 20)
+  let startDate = new Date(2019, 4, 15);
+  let endDate = new Date(2019, 4, 31)
   var filteredArray = eventList.filter(event => event.date >= startDate && event.date <= endDate); //> = after < = before <= syntax
 
   return filteredArray;
