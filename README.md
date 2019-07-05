@@ -14,8 +14,14 @@ Netlify uses NodeJS 8.x, so using that locally with `nvm` is recommended.
 ## Running locally
 Setup a `.env` file with the following environment variables (get info from a developer):
 ```
-CONNECTION_STRING=
+CONNECTION_STRING=<MongoDB connection string>
+API_KEY=<Cloudinary API key>
+API_SECRET=<Cloudinary API secret>
+CLOUD_NAME=<Cloudindary cloud name>
 ```
+
+When submitting content locally/testing, please use a different Mongo collection. 
+Set the following env var: `EVENT_COLLECTION=<value that is not 'events'>`
 
 ```
 npm install
