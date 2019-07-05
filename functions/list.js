@@ -19,6 +19,12 @@ mongoose.
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
 
+  var urlStartDate = event.queryStringParameters.startDate
+  var urlEndDate = event.queryStringParameters.endDate
+  console.log(urlStartDate + " to " + urlEndDate)
+
+  // http://localhost:8888/.netlify/functions/list?startDate=2019-05-22&endDate=2019-05-31
+
   EventItem.find().sort( {date: -1} ).then((results) => {
     callback(null, {
       statusCode: 200,
