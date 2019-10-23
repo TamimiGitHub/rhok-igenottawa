@@ -59,7 +59,7 @@ const header = `
     <div class="pure-g">
       <div class="pure-u-1 text-center"><img src="/images/logo2.png" alt="iGen Ottawa Logo"></div>
       <div class="pure-u-1 text-center">
-        <a class="pure-button" href="https://www.igenottawa.ca/">Home</a>
+        <a class="pure-button" href="https://www.igenottawa.ca/">Home/Accueil</a>
         <a class="pure-button" href="/create">Post an Event/Afficher un événement</a>
       </div>
     </div>
